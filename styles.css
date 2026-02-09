@@ -253,3 +253,9 @@ footer {
         padding-left: 1.5rem;
     }
 }
+
+.nav-logo {
+    height: 40px;  /* Adjust height as needed */
+    width: auto;
+    display: block;
+}

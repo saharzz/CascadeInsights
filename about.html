@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Cascade Insights LLP</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:       #111210;
+  --bg:        #f4f3ef;
+  --mid:       #6b7a6e;
+  --accent:    #2d5a3d;
+  --rule:      #d8d6cf;
+  --card-bg:   #eeecea;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1.6rem 4rem;
+  background: rgba(244,243,239,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-brand img {
+  height: 36px;
+  display: block;
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 10rem 4rem 7rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+/* ── EYEBROW ── */
+.page-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+/* ── SECTION HEADINGS ── */
+.section-heading {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+/* ── BODY TEXT ── */
+.body-text {
+  font-size: 0.97rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--ink);
+  opacity: 0.7;
+  margin-bottom: 1.6rem;
+}
+
+.body-text a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.body-text a:hover { opacity: 0.65; }
+
+/* ── DIVIDER ── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 4rem 0;
+}
+
+/* ── TEAM ── */
+.team-label {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 3rem;
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.team-member {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.8rem;
+  align-items: start;
+  opacity: 0;
+  animation: fadeUp 0.8s ease calc(0.5s + var(--i) * 0.15s) forwards;
+}
+
+.team-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: grayscale(15%);
+}
+
+.member-name {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+}
+
+.member-title {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.member-bio {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  opacity: 0.35;
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  nav { padding: 1.4rem 2rem; }
+  main { padding: 9rem 2rem 5rem; }
+  .team-member {
+    grid-template-columns: 1fr;
+  }
+  .team-member img {
+    width: 140px;
+    height: 140px;
+  }
+  footer { padding: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <a href="index.html">
+      <img src="CascadeLogoWebsite.png" alt="Cascade Insights LLP">
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- About the firm -->
+  <p class="page-eyebrow">About Us — Cascade Insights LLP</p>
+  <h1 class="section-heading">Statistical Consulting</h1>
+
+  <p class="body-text">We are a statistical consultancy firm based in Seattle, WA. We provide biostatistical services for design and analysis of common studies, such as prospective randomized trials, as well as specialized consulting on complex study designs, integration of generative artificial intelligence methods, and statistical approaches for collection, integration, and analysis of complex and real-world data. Our services include methodological guidance, statistical analysis, educational training, and technical support for industry, academic, and governmental clients. Please visit our <a href="services.html">services</a> page to learn more about how we can help.</p>
+
+  <p class="body-text">Our name pays homage to the Cascades, a major mountain range in western North America. The name also underscores three elements of statistical consulting that are at the core of our practice: (1) study design and analysis plans have a cascading effect on quality and relevance of insights; (2) similar to mountains in the range, each study has distinct features that may differ from others and would require unique approaches and perspectives; and (3) just as the Cascades shape the continent's climate through their collective presence rather than individual peaks, statistical practice achieves impact through collaboration and partnerships.</p>
+
+  <hr class="section-divider">
+
+  <!-- Team -->
+  <p class="team-label">Our Team</p>
+
+  <div class="team-grid">
+
+    <div class="team-member" style="--i:0">
+      <img src="SaharHeadshot.jpg" alt="Sahar Zangeneh">
+      <div>
+        <p class="member-name">Sahar Zangeneh, PhD</p>
+        <p class="member-title">Founder &amp; Principal Consultant</p>
+        <p class="member-bio">Sahar Zangeneh (she/her) is a (bio)statistician specializing in the design and analysis of experimental and observational studies, including complex sample surveys, individual- and community-randomized trials, and observational cohort studies. Her methodological work focuses on developing statistical methods for addressing missingness and non-random selection, particularly when missingness or selection depends on unobserved factors (missing not at random). Her collaborative research addresses population health and health equity across biomedical and epidemiological domains. She is a Clinical Associate Professor at the University of Washington, where she teaches graduate courses and mentors students.</p>
+      </div>
+    </div>
+
+    <div class="team-member" style="--i:1">
+      <img src="AliHeadshot.jpeg" alt="Ali Shojaie">
+      <div>
+        <p class="member-name">Ali Shojaie, PhD</p>
+        <p class="member-title">Co-founder &amp; Principal Consultant</p>
+        <p class="member-bio">Ali Shojaie (he/him) is the Norm Breslow Endowed Professor of Biostatistics and Statistics at the University of Washington, where he serves as Interim Chair of the Department of Biostatistics. His research lies at the intersection of statistical machine learning, statistical network analysis, and applications in biology and social sciences. He is the founding director of the Summer Institute for Statistics in Big Data (SISBID) at the University of Washington and Lead of the Data Management and Statistics (DMS) Core of the UW Alzheimer's Disease Research Center (ADRC).</p>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <span class="footer-copy">&copy; <span id="year"></span> Cascade Insights LLP. All rights reserved.</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

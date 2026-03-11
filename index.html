@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — Cascade Insights LLP</title>
+<title>Cascade Insights LLP</title>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,6 +25,7 @@ body {
   color: var(--ink);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* ── NAV ── */
@@ -35,7 +36,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem 5vw;
+  padding: 1.4rem 5vw;
   background: rgba(244,243,239,0.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
@@ -55,16 +56,18 @@ nav {
   display: block;
 }
 
-/* ── MAIN ── */
-main {
-  width: 100%;
-  padding: 10rem 5vw 7rem;
+/* ── PAGE LAYOUT: hero + cards share the viewport ── */
+.hero {
+  height: 52vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5vw;
   opacity: 0;
   animation: fadeUp 1s ease 0.3s forwards;
 }
 
-/* ── EYEBROW ── */
-.page-eyebrow {
+.hero-eyebrow {
   font-size: 0.62rem;
   font-weight: 400;
   letter-spacing: 0.3em;
@@ -73,104 +76,173 @@ main {
   margin-bottom: 2rem;
 }
 
-/* ── SECTION HEADINGS ── */
-.section-heading {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+.hero h1 {
+  font-size: clamp(2.2rem, 4.5vw, 4.4rem);
   font-weight: 200;
-  line-height: 1.15;
+  line-height: 1.08;
   letter-spacing: -0.01em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
+  max-width: 70vw;
 }
 
-/* ── BODY TEXT ── */
-.body-text {
-  font-size: 0.97rem;
+.hero h1 strong { font-weight: 500; }
+
+.hero-body {
+  font-size: 1rem;
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 1.75;
   color: var(--ink);
-  opacity: 0.7;
+  opacity: 0.65;
+  max-width: 54ch;
   margin-bottom: 1.6rem;
 }
 
-.body-text a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 1px;
-  transition: opacity 0.2s;
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
-.body-text a:hover { opacity: 0.65; }
+
+.btn-primary {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+.btn-ghost {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  opacity: 0.4;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.25s;
+}
+.btn-ghost:hover { opacity: 0.9; }
 
 /* ── DIVIDER ── */
 .section-divider {
   border: none;
   border-top: 1px solid var(--rule);
-  margin: 4rem 0;
+  margin: 0 5vw;
 }
 
-/* ── TEAM ── */
-.team-label {
+/* ── CARDS SECTION: fills remaining viewport ── */
+.cards-section {
+  height: 48vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5vw;
+}
+
+.cards-label {
   font-size: 0.6rem;
   font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--mid);
-  margin-bottom: 3rem;
-}
-
-.team-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.team-member {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 2.8rem;
-  align-items: start;
-  opacity: 0;
-  animation: fadeUp 0.8s ease calc(0.5s + var(--i) * 0.15s) forwards;
-}
-
-.team-member img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: top;
-  display: block;
-  filter: grayscale(15%);
-}
-
-.member-name {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-  color: var(--ink);
-}
-
-.member-title {
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
   margin-bottom: 1.2rem;
 }
 
-.member-bio {
-  font-size: 0.88rem;
-  font-weight: 300;
-  line-height: 1.85;
-  color: var(--ink);
-  opacity: 0.65;
+/* Top row: 3 cards with gaps between them */
+.cards-grid-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
 }
+
+/* Bottom row: contact card centered */
+.cards-grid-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.cards-grid-bottom .card-contact {
+  width: calc(33.333% - 0.4rem);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  padding: 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease calc(0.6s + var(--i) * 0.12s) forwards;
+  transition: background 0.25s, border-color 0.25s;
+}
+.card:hover { background: #e6e4e0; border-color: #b0aea8; }
+
+.card-num {
+  font-size: 0.52rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.card-body {
+  font-size: 0.76rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: 0.55;
+  flex: 1;
+}
+
+/* Contact card */
+.card-contact { background: var(--accent); border-color: var(--accent); color: #fff; }
+.card-contact:hover { background: var(--ink); border-color: var(--ink); }
+.card-contact .card-num { color: rgba(255,255,255,0.5); opacity: 1; }
+.card-contact .card-title { color: #fff; font-weight: 400; font-size: 1rem; }
+.card-contact .card-body { color: rgba(255,255,255,0.65); opacity: 1; }
+
+.card-contact-btn {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.25s;
+  align-self: flex-start;
+}
+.card-contact-btn:hover { border-color: #fff; }
 
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--rule);
-  padding: 2rem 5vw;
+  padding: 1.6rem 5vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -191,41 +263,56 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── RESPONSIVE: MOBILE VERTICAL ── */
+/* ── MOBILE: vertical layout ── */
 @media (max-width: 600px) {
-  nav { padding: 1.2rem 5vw; }
-  nav .nav-brand img { height: 28px; }
-  nav .nav-title { font-size: 0.55rem; }
+  nav { padding: 1.1rem 5vw; }
+  .nav-brand img { height: 28px; }
+  .nav-title { font-size: 0.5rem; }
 
-  main { padding: 7rem 5vw 4rem; }
+  /* Hero: auto height, no full-screen lock */
+  .hero {
+    height: auto;
+    padding: 7rem 5vw 3rem;
+  }
 
-  .page-eyebrow { font-size: 0.58rem; margin-bottom: 1.2rem; }
+  .hero h1 {
+    font-size: 2rem;
+    max-width: 100%;
+    margin-bottom: 1.4rem;
+  }
 
-  .section-heading { font-size: 1.6rem; margin-bottom: 1.4rem; }
+  .hero-eyebrow { margin-bottom: 1.4rem; }
 
-  .body-text { font-size: 0.92rem; line-height: 1.75; margin-bottom: 1.2rem; }
+  .hero-body {
+    font-size: 0.92rem;
+    margin-bottom: 2rem;
+  }
 
-  .section-divider { margin: 2.5rem 0; }
+  .section-divider { margin: 0 5vw; }
 
-  .team-label { margin-bottom: 2rem; }
+  /* Cards: auto height, stack vertically */
+  .cards-section {
+    height: auto;
+    padding: 2.5rem 5vw 3rem;
+  }
 
-  .team-grid { gap: 2.8rem; }
+  .cards-label { margin-bottom: 1.4rem; }
 
-  .team-member {
+  .cards-grid-top {
     grid-template-columns: 1fr;
-    gap: 1.4rem;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
   }
 
-  .team-member img {
-    width: 110px;
-    height: 110px;
+  .cards-grid-bottom .card-contact {
+    width: 100%;
   }
 
-  .member-name { font-size: 0.95rem; }
-  .member-title { font-size: 0.65rem; margin-bottom: 0.8rem; }
-  .member-bio { font-size: 0.84rem; line-height: 1.75; }
+  .card { padding: 1.3rem 1.2rem; }
+  .card-title { font-size: 0.88rem; }
+  .card-body { font-size: 0.78rem; }
 
-  footer { padding: 1.5rem 5vw; }
+  footer { padding: 1.4rem 5vw; }
   .footer-copy { font-size: 0.58rem; }
 }
 </style>
@@ -233,50 +320,58 @@ footer {
 <body>
 
 <nav>
-  <span class="nav-title">Statistical Consulting</span>
+  <span class="nav-title">Statistical Consulting — Cascade Insights LLP</span>
   <div class="nav-brand">
-    <a href="index.html">
-      <img src="CascadeLogoWebsite.png" alt="Cascade Insights LLP">
-    </a>
+    <img src="CascadeLogoWebsite.png" alt="Cascade Insights LLP">
   </div>
 </nav>
 
 <main>
 
-  <!-- About the firm -->
-  <p class="page-eyebrow">About Us — Cascade Insights LLP</p>
-  <h1 class="section-heading">Statistical Consulting</h1>
-
-  <p class="body-text">We are a statistical consultancy firm based in Seattle, WA. We provide biostatistical services for design and analysis of common studies, such as prospective randomized trials, as well as specialized consulting on complex study designs, integration of generative artificial intelligence methods, and statistical approaches for collection, integration, and analysis of complex and real-world data. Our services include methodological guidance, statistical analysis, educational training, and technical support for industry, academic, and governmental clients. Please visit our <a href="services.html">services</a> page to learn more about how we can help.</p>
-
-  <p class="body-text">Our name pays homage to the Cascades, a major mountain range in western North America. The name also underscores three elements of statistical consulting that are at the core of our practice: (1) study design and analysis plans have a cascading effect on quality and relevance of insights; (2) similar to mountains in the range, each study has distinct features that may differ from others and would require unique approaches and perspectives; and (3) just as the Cascades shape the continent's climate through their collective presence rather than individual peaks, statistical practice achieves impact through collaboration and partnerships.</p>
+  <section class="hero">
+    <h1>Scientific excellence.<br><strong>Real-world relevance.</strong></h1>
+    <p class="hero-body">
+      We listen before we act: to identify your goals, your gaps, and your constraints. We collaborate to design your study and analyze your data. We stay until your needs are met.
+    </p>
+    <div class="hero-cta-row">
+      <a href="services.html" class="btn-primary">Our Services</a>
+      <a href="about.html" class="btn-ghost">About us →</a>
+    </div>
+  </section>
 
   <hr class="section-divider">
 
-  <!-- Team -->
-  <p class="team-label">Our Team</p>
+  <section class="cards-section">
+    <p class="cards-label">What we bring</p>
 
-  <div class="team-grid">
-
-    <div class="team-member" style="--i:0">
-      <img src="SaharHeadshot.jpg" alt="Sahar Zangeneh">
-      <div>
-        <p class="member-name">Sahar Zangeneh, PhD</p>
-        <p class="member-title">Founder &amp; Principal Consultant</p>
-        <p class="member-bio">Sahar Zangeneh (she/her) is a (bio)statistician specializing in the design and analysis of experimental and observational studies, including complex sample surveys, individual- and community-randomized trials, and observational cohort studies. Her methodological work focuses on developing statistical methods for addressing missingness and non-random selection, particularly when missingness or selection depends on unobserved factors (missing not at random). Her collaborative research addresses population health and health equity across biomedical and epidemiological domains. She is a Clinical Associate Professor at the University of Washington, where she teaches graduate courses and mentors students.</p>
+    <div class="cards-grid-top">
+      <div class="card" style="--i:0">
+        <span class="card-num">01</span>
+        <h3 class="card-title">Full Lifecycle Partnership</h3>
+        <p class="card-body">From study design and protocol development through analysis and technical writing — we are with you at every stage, not just when the data arrives.</p>
+      </div>
+      <div class="card" style="--i:1">
+        <span class="card-num">02</span>
+        <h3 class="card-title">Academic Roots</h3>
+        <p class="card-body">Born out of academia, we bring the rigor of peer-reviewed research to applied problems — complementary expertise grounded in years of scholarly practice.</p>
+      </div>
+      <div class="card" style="--i:2">
+        <span class="card-num">03</span>
+        <h3 class="card-title">Education & Curiosity</h3>
+        <p class="card-body">We learn your domain before we design. We explain our methods as we go. You leave each engagement with deeper understanding — not just a deliverable.</p>
       </div>
     </div>
 
-    <div class="team-member" style="--i:1">
-      <img src="AliHeadshot.jpeg" alt="Ali Shojaie">
-      <div>
-        <p class="member-name">Ali Shojaie, PhD</p>
-        <p class="member-title">Co-founder &amp; Principal Consultant</p>
-        <p class="member-bio">Ali Shojaie (he/him) is the Norm Breslow Endowed Professor of Biostatistics and Statistics at the University of Washington, where he serves as Interim Chair of the Department of Biostatistics. His research lies at the intersection of statistical machine learning, statistical network analysis, and applications in biology and social sciences. He is the founding director of the Summer Institute for Statistics in Big Data (SISBID) at the University of Washington and Lead of the Data Management and Statistics (DMS) Core of the UW Alzheimer's Disease Research Center (ADRC).</p>
+    <div class="cards-grid-bottom">
+      <div class="card card-contact" style="--i:3">
+        <span class="card-num">04</span>
+        <h3 class="card-title">Partner with us.</h3>
+        <p class="card-body">Learn more about how we can partner on your next project.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSduhihY_JUp4ctFGKhMeEL-ZrNru9KOWSDKgYDyfuqeHwDFGw/viewform" target="_blank" class="card-contact-btn">Request Consultation →</a>
       </div>
     </div>
 
-  </div>
+  </section>
 
 </main>
 

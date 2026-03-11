@@ -160,6 +160,42 @@ main {
   opacity: 0.65;
 }
 
+/* ── CTA BOX ── */
+.cta-box {
+  background: var(--accent);
+  padding: 3.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cta-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 200;
+  line-height: 1.2;
+  color: #fff;
+  max-width: 55ch;
+}
+
+.btn-partner {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  background: #fff;
+  color: var(--accent);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+.btn-partner:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--rule);
@@ -218,6 +254,13 @@ footer {
 
   footer { padding: 1.5rem 5vw; }
   .footer-copy { font-size: 0.58rem; }
+
+  .cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 5vw;
+  }
+  .cta-title { font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -264,6 +307,14 @@ footer {
       </div>
     </div>
 
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Call to action -->
+  <div class="cta-box">
+    <h2 class="cta-title">Let's talk so we can get to know each other better.</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSduhihY_JUp4ctFGKhMeEL-ZrNru9KOWSDKgYDyfuqeHwDFGw/viewform" target="_blank" class="btn-partner">Partner with us</a>
   </div>
 
 </main>

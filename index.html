@@ -9,12 +9,12 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --ink:       #111210;
-  --bg:        #f4f3ef;
-  --mid:       #6b7a6e;
-  --accent:    #2d5a3d;
-  --rule:      #d8d6cf;
-  --card-bg:   #eeecea;
+  --ink:       #1a1a1a;
+  --bg:        #f5f5f3;
+  --mid:       #7a8a99;
+  --accent:    #4b5f72;
+  --rule:      #d6d8db;
+  --card-bg:   #ebebea;
 }
 
 html { scroll-behavior: smooth; }
@@ -37,7 +37,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 5vw;
-  background: rgba(244,243,239,0.88);
+  background: rgba(245,245,243,0.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
 }
@@ -56,7 +56,7 @@ nav {
   display: block;
 }
 
-/* ── PAGE LAYOUT: hero + cards share the viewport ── */
+/* ── HERO ── */
 .hero {
   height: 70vh;
   display: flex;
@@ -65,15 +65,6 @@ nav {
   padding: 0 5vw;
   opacity: 0;
   animation: fadeUp 1s ease 0.3s forwards;
-}
-
-.hero-eyebrow {
-  font-size: 0.62rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 2rem;
 }
 
 .hero h1 {
@@ -100,26 +91,10 @@ nav {
 .hero-cta-row {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.6rem;
 }
 
-.btn-primary {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0.85rem 2rem;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.25s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
-
+/* Ghost links (Our Services, About us) */
 .btn-ghost {
   font-size: 0.68rem;
   font-weight: 400;
@@ -134,6 +109,24 @@ nav {
 }
 .btn-ghost:hover { opacity: 0.9; }
 
+/* Partner with us — filled box */
+.btn-partner {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-partner:hover { background: var(--ink); transform: translateY(-1px); }
+
 /* ── DIVIDER ── */
 .section-divider {
   border: none;
@@ -141,7 +134,7 @@ nav {
   margin: 0 5vw;
 }
 
-/* ── CARDS SECTION: fills remaining viewport ── */
+/* ── CARDS SECTION ── */
 .cards-section {
   height: 30vh;
   display: flex;
@@ -159,28 +152,16 @@ nav {
   margin-bottom: 1.2rem;
 }
 
-/* Top row: 3 cards with gaps between them */
 .cards-grid-top {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-
-/* Bottom row: contact card centered */
-.cards-grid-bottom {
-  display: flex;
-  justify-content: center;
-}
-
-.cards-grid-bottom .card-contact {
-  width: calc(33.333% - 0.4rem);
 }
 
 .card {
-  background: var(--card-bg);
+  background: #fff;
   border: 1px solid var(--rule);
-  padding: 1.6rem 1.6rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -188,7 +169,7 @@ nav {
   animation: fadeUp 0.8s ease calc(0.6s + var(--i) * 0.12s) forwards;
   transition: background 0.25s, border-color 0.25s;
 }
-.card:hover { background: #e6e4e0; border-color: #b0aea8; }
+.card:hover { background: var(--card-bg); border-color: #b0b4b8; }
 
 .card-num {
   font-size: 0.52rem;
@@ -215,30 +196,6 @@ nav {
   flex: 1;
 }
 
-/* Contact card */
-.card-contact { background: var(--accent); border-color: var(--accent); color: #fff; }
-.card-contact:hover { background: var(--ink); border-color: var(--ink); }
-.card-contact .card-num { color: rgba(255,255,255,0.5); opacity: 1; }
-.card-contact .card-title { color: #fff; font-weight: 400; font-size: 1rem; }
-.card-contact .card-body { color: rgba(255,255,255,0.65); opacity: 1; }
-
-.card-contact-btn {
-  display: inline-block;
-  margin-top: auto;
-  padding-top: 1.2rem;
-  font-size: 0.62rem;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.4);
-  padding-bottom: 2px;
-  transition: border-color 0.25s;
-  align-self: flex-start;
-}
-.card-contact-btn:hover { border-color: #fff; }
-
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--rule);
@@ -263,13 +220,12 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── MOBILE: vertical layout ── */
+/* ── MOBILE ── */
 @media (max-width: 600px) {
   nav { padding: 1.1rem 5vw; }
   .nav-brand img { height: 28px; }
   .nav-title { font-size: 0.5rem; }
 
-  /* Hero: auto height, no full-screen lock */
   .hero {
     height: auto;
     padding: 7rem 5vw 3rem;
@@ -281,16 +237,19 @@ footer {
     margin-bottom: 1.4rem;
   }
 
-  .hero-eyebrow { margin-bottom: 1.4rem; }
-
   .hero-body {
     font-size: 0.92rem;
     margin-bottom: 2rem;
   }
 
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
   .section-divider { margin: 0 5vw; }
 
-  /* Cards: auto height, stack vertically */
   .cards-section {
     height: auto;
     padding: 2.5rem 5vw 3rem;
@@ -301,11 +260,6 @@ footer {
   .cards-grid-top {
     grid-template-columns: 1fr;
     gap: 0.8rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .cards-grid-bottom .card-contact {
-    width: 100%;
   }
 
   .card { padding: 1.3rem 1.2rem; }
@@ -334,8 +288,9 @@ footer {
       We listen before we act: to identify your goals, your gaps, and your constraints. We collaborate to design your study and analyze your data. We stay until your needs are met.
     </p>
     <div class="hero-cta-row">
-      <a href="services.html" class="btn-primary">Our Services</a>
+      <a href="services.html" class="btn-ghost">Our Services →</a>
       <a href="about.html" class="btn-ghost">About us →</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSduhihY_JUp4ctFGKhMeEL-ZrNru9KOWSDKgYDyfuqeHwDFGw/viewform" target="_blank" class="btn-partner">Partner with us</a>
     </div>
   </section>
 
@@ -359,15 +314,6 @@ footer {
         <span class="card-num">03</span>
         <h3 class="card-title">Education & Curiosity</h3>
         <p class="card-body">We learn your domain before we design. We explain our methods as we go. You leave each engagement with deeper understanding — not just a deliverable.</p>
-      </div>
-    </div>
-
-    <div class="cards-grid-bottom">
-      <div class="card card-contact" style="--i:3">
-        <span class="card-num">04</span>
-        <h3 class="card-title">Partner with us.</h3>
-        <p class="card-body">Learn more about how we can partner on your next project.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSduhihY_JUp4ctFGKhMeEL-ZrNru9KOWSDKgYDyfuqeHwDFGw/viewform" target="_blank" class="card-contact-btn">Request Consultation →</a>
       </div>
     </div>
 

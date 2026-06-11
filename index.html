@@ -64,7 +64,7 @@ nav {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .banner-img {
@@ -73,14 +73,15 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center 30%;
 }
 
 .banner-content {
   position: relative;
   z-index: 20;
   padding: 0 5vw;
-  padding-bottom: 22vh;
+  /* Treeline is at 83.9% from top of image — keep text in top 60% of viewport */
+  margin-top: clamp(88px, 16vh, 160px);
   opacity: 0;
   animation: fadeUp 1s ease 0.3s forwards;
 }
@@ -262,7 +263,8 @@ footer {
   /* Content: pushed up from mountains, full-width with comfortable padding */
   .banner-content {
     padding: 0 6vw;
-    padding-bottom: 18vh;
+    /* Vertical image: treeline at 77.8% from top — text in top 55% */
+    margin-top: clamp(80px, 14vh, 140px);
   }
 
   .banner-headline {
@@ -308,6 +310,9 @@ footer {
   .card-title { font-size: 1.02rem; }
   .card-body { font-size: 0.92rem; }
 
+  .banner-img {
+    object-position: center 25%;
+  }
   footer { padding: 1.4rem 5vw; flex-direction: column; gap: 0.5rem; text-align: center; }
   .footer-copy { font-size: 0.65rem; }
 }
